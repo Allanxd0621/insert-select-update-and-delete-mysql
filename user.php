@@ -1,14 +1,23 @@
 <?php 
 session_start();
 
+
+
+
+
 $cann = mysqli_connect('localhost' , 'root' , '' , 'practice_db');
 
 if(!$cann){
     die("Connection Failed");
 }
 
+$foodNameShow = '';
+$foodPriceShow = '';
+$foodStatusShow = '';
+
 if(isset($_POST['order'])){
 
+    $user_id = $_SESSION['id'];
     $foodName = $_POST['foodName'];
     $foodPrice = $_POST['foodPrice'];
     $foodStatus = $_POST['foodStatus'];
@@ -20,13 +29,12 @@ if(isset($_POST['order'])){
     mysqli_query($cann , $sql);
 
     }
-//now we get those values the approriate thing to do here is having a user id as the where id selection for the vendors but since this is just a practice lets just use the food name 
 
 
 if(isset($_POST['refresh'])){
 
 
-$show = "SELECT * FROM orders ORDER BY id DESC LIMIT 1";
+$show = "SELECT * FROM orders WHERE user_id = $user_id";
 
 $result = mysqli_query($cann , $show);
 
