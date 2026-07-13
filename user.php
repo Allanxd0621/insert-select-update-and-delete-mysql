@@ -22,7 +22,7 @@ if(isset($_POST['order'])){
     $foodPrice = $_POST['foodPrice'];
     $foodStatus = $_POST['foodStatus'];
 
-    $sql = "INSERT INTO orders (foodName , foodPrice , foodStatus) VALUES ('$foodName' , '$foodPrice' , '$foodStatus')";
+    $sql = "INSERT INTO orders (user_id, foodName , foodPrice , foodStatus) VALUES ('$user_id' ,'$foodName' , '$foodPrice' , '$foodStatus')";
 
     
 
