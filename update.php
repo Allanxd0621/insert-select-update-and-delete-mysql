@@ -19,7 +19,7 @@ $password = $datas['password'];
 
 //now for the update mysql using php
 
-if($_SERVER['REQUEST_METHOD'] == "POST"){
+if(isset($_POST['newUsername']) || isset($_POST['newPassword'])){
 //first detects if there is a new password input
 
 $newUsername = $_POST['newUsername'];
@@ -46,6 +46,13 @@ exit(); // simply reaload
 
 }
 
+if(isset($_POST['next'])){
+
+    header("location: user.php");
+    exit();
+
+}
+
 
 ?>
 
@@ -68,6 +75,10 @@ exit(); // simply reaload
         <input type="password" placeholder="Enter new password" name="newPassword">
 
         <button type="submit">Confirm</button>
+    </form>
+
+    <form  method="post">
+        <button name="next">Next</button>
     </form>
 
 </body>
